@@ -189,9 +189,9 @@ def convert_coco_to_ls(
             logger.warning('Segmentation in COCO is experimental')
             tags.update({segmentation_from_name: 'PolygonLabels'})
             segmentation_once = True
-        if bbox and not bbox_once:
-            tags.update({rectangles_from_name: 'RectangleLabels'})
-            bbox_once = True
+        #if bbox and not bbox_once:
+        #    tags.update({rectangles_from_name: 'RectangleLabels'})
+        #    bbox_once = True
 
         # read image sizes
         image_id = annotation['image_id']
@@ -204,16 +204,16 @@ def convert_coco_to_ls(
 
         task = tasks[image_id]
 
-        if 'bbox' in annotation:
-            item = create_bbox(
-                annotation,
-                categories,
-                rectangles_from_name,
-                image_height,
-                image_width,
-                to_name,
-            )
-            task[out_type][0]['result'].append(item)
+        #if 'bbox' in annotation:
+        #    item = create_bbox(
+        #        annotation,
+        #        categories,
+        #        rectangles_from_name,
+        #        image_height,
+        #        image_width,
+        #        to_name,
+        #    )
+        #    task[out_type][0]['result'].append(item)
 
         if annotation.get('segmentation', []):
             item = create_segmentation(
